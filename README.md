@@ -16,27 +16,25 @@ A beautiful Terminal User Interface (TUI) application for recording and transcri
 - **AI Summarization** - Generate meeting summaries with key points and action items
 - **Beautiful TUI** - Modern terminal interface with keyboard navigation
 
-## Screenshots
-
 ```
-╭──────────────────────────────────────────────────╮ ╭─────────────────────────╮
-│                                                  │ │ RECORDINGS              │
-│ █▀█ █▀█ █▀▀ █▄ █ █▀▄ █▀▀ █▄▄ █▀█ █▀▀ █ █▀▀      │ │                         │
-│ █▄█ █▀▀ ██▄ █ ▀█ █▄▀ ██▄ █▄█ █▀▄ ██▄ █ █▀       │ │ >T Jan 6, 2:30 PM       │
-│                                                  │ │    5.2 MB               │
-│ READY v0.1.3                                     │ │                         │
-│                                                  │ │  ○ Jan 5, 10:15 AM      │
-│ Mode:   Mic + System                             │ │    12.1 MB              │
-│                                                  │ │                         │
-│ Mic:    MacBook Pro Microphone                   │ ╰─────────────────────────╯
-│ System: System Audio                             │
-│                                                  │
-│ APIs:   OpenAI, ElevenLabs                       │
-│ Screen: Granted                                  │
-╰──────────────────────────────────────────────────╯
-╭──────────────────────────────────────────────────────────────────────────────╮
-│ [r] Record  [m] Mic  [s] Sys  [b] Both  [l] List  [a] Keys  [q] Quit         │
-╰──────────────────────────────────────────────────────────────────────────────╯
+ ╭──────────────────────────────────────────────────╮ ╭─────────────────────────╮
+ │                                                  │ │ RECORDINGS              │
+ │  █▀█ █▀█ █▀▀ █▄ █ █▀▄ █▀▀ █▄▄ █▀█ █▀▀ █ █▀▀     │ │                         │
+ │  █▄█ █▀▀ ██▄ █ ▀█ █▄▀ ██▄ █▄█ █▀▄ ██▄ █ █▀      │ │  >T Jan 6, 2:30 PM      │
+ │                                                  │ │     5.2 MB              │
+ │  READY v0.1.3                                    │ │                         │
+ │                                                  │ │   ○ Jan 5, 10:15 AM     │
+ │  Mode:   Mic + System                            │ │     12.1 MB             │
+ │                                                  │ │                         │
+ │  Mic:    MacBook Pro Microphone                  │ ╰─────────────────────────╯
+ │  System: System Audio                            │
+ │                                                  │
+ │  APIs:   OpenAI, ElevenLabs                      │
+ │  Screen: Granted                                 │
+ ╰──────────────────────────────────────────────────╯
+ ╭──────────────────────────────────────────────────────────────────────────────╮
+ │  [r] Record  [m] Mic  [s] Sys  [b] Both  [l] List  [a] Keys  [q] Quit        │
+ ╰──────────────────────────────────────────────────────────────────────────────╯
 ```
 
 ## Requirements
