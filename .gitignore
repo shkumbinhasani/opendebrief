@@ -1,0 +1,47 @@
+# dependencies (bun install)
+node_modules
+
+# output
+out
+*.tgz
+
+# compiled native binary (not source)
+native/recorder
+
+# code coverage
+coverage
+*.lcov
+
+# logs
+logs
+_.log
+report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
+
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# caches
+.eslintcache
+.cache
+*.tsbuildinfo
+
+# IntelliJ based IDEs
+.idea
+
+# Finder (MacOS) folder config
+.DS_Store
+
+# recordings
+*.m4a
+
+# agent instructions (private)
+AGENTS.md
+CLAUDE.md
+.cursor/
+
+# dist is built, not committed
+dist/
