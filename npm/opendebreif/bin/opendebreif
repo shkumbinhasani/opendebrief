@@ -17,7 +17,6 @@ function run(target, args) {
 }
 
 const platform = os.platform();
-const arch = os.arch();
 
 if (platform !== "darwin") {
   console.error("opendebreif currently only supports macOS");
@@ -25,7 +24,8 @@ if (platform !== "darwin") {
   process.exit(1);
 }
 
-const pkgName = `opendebreif-darwin-${arch === "arm64" ? "arm64" : "x64"}`;
+// Always use arm64 binary (works on Intel via Rosetta 2)
+const pkgName = "opendebreif-darwin-arm64";
 const binaryName = "opendebreif";
 
 // Find the binary in node_modules
