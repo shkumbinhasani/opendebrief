@@ -1,5 +1,11 @@
 # opendebreif
 
+## 0.2.4
+
+### Patch Changes
+
+- [`dac0cca`](https://github.com/shkumbinhasani/opendebreif/commit/dac0cca04eaefe4d1112d94d0428887f6903e8a8) Thanks [@shkumbinhasani](https://github.com/shkumbinhasani)! - Fix changesets release workflow to properly handle existing tags
+
 ## 0.2.3
 
 ### Patch Changes
