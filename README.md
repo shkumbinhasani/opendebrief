@@ -41,13 +41,7 @@ Record any meeting. Transcribe it. Know who said what.
 curl -fsSL https://raw.githubusercontent.com/shkumbinhasani/opendebreif/main/install | bash
 ```
 
-Or with npm:
-
-```bash
-npm install -g opendebreif
-```
-
-One binary. No dependencies.
+One command. One binary. No dependencies.
 
 ### Requirements
 
