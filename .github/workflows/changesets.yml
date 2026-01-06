@@ -16,10 +16,12 @@ jobs:
     name: Changesets
     runs-on: ubuntu-latest
     outputs:
-      published: ${{ steps.changesets.outputs.published }}
-      publishedPackages: ${{ steps.changesets.outputs.publishedPackages }}
+      released: ${{ steps.release-check.outputs.released }}
+      version: ${{ steps.release-check.outputs.version }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: oven-sh/setup-bun@v2
         with:
@@ -27,6 +29,10 @@ jobs:
 
       - name: Install dependencies
         run: bun install
+
+      - name: Get version before
+        id: version-before
+        run: echo "version=$(cat package.json | jq -r .version)" >> $GITHUB_OUTPUT
 
       - name: Create Release Pull Request or Tag
         id: changesets
@@ -39,16 +45,36 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Check if release was created
+        id: release-check
+        run: |
+          VERSION=$(cat package.json | jq -r .version)
+          if git tag -l "v$VERSION" | grep -q "v$VERSION"; then
+            # Check if this tag was just created (within last 5 minutes)
+            if gh release view "v$VERSION" --json createdAt -q '.createdAt' 2>/dev/null; then
+              echo "released=true" >> $GITHUB_OUTPUT
+              echo "version=$VERSION" >> $GITHUB_OUTPUT
+              echo "Release v$VERSION was created"
+            else
+              echo "released=false" >> $GITHUB_OUTPUT
+              echo "No release found"
+            fi
+          else
+            echo "released=false" >> $GITHUB_OUTPUT
+            echo "No new tag created"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   build-release:
     name: Build Release
     needs: changesets
-    if: needs.changesets.outputs.published == 'true'
+    if: needs.changesets.outputs.released == 'true'
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: main
-          fetch-depth: 0
+          ref: v${{ needs.changesets.outputs.version }}
 
       - uses: oven-sh/setup-bun@v2
         with:
@@ -56,11 +82,6 @@ jobs:
 
       - name: Install dependencies
         run: bun install
-
-      - name: Get version from package.json
-        run: |
-          VERSION=$(cat package.json | grep '"version"' | head -1 | awk -F'"' '{print $4}')
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: Build binary
         run: |
@@ -74,10 +95,10 @@ jobs:
       - name: Create archive
         run: |
           cd dist/darwin-arm64
-          zip -r ../opendebreif-v${{ env.VERSION }}-darwin-arm64.zip .
+          zip -r ../opendebreif-v${{ needs.changesets.outputs.version }}-darwin-arm64.zip .
 
       - name: Upload to GitHub Release
         run: |
-          gh release upload v${{ env.VERSION }} dist/opendebreif-v${{ env.VERSION }}-darwin-arm64.zip --clobber
+          gh release upload v${{ needs.changesets.outputs.version }} dist/opendebreif-v${{ needs.changesets.outputs.version }}-darwin-arm64.zip --clobber
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
