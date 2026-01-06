@@ -115,6 +115,9 @@ jobs:
   publish-npm:
     needs: [build-macos]
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v4
 
@@ -135,16 +138,12 @@ jobs:
       - name: Publish darwin-arm64
         run: |
           cd npm-packages/npm-darwin-arm64
-          npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          npm publish --access public --provenance
 
       - name: Publish darwin-x64
         run: |
           cd npm-packages/npm-darwin-x64
-          npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          npm publish --access public --provenance
 
       - name: Publish main package
         run: |
@@ -174,6 +173,4 @@ jobs:
             }
           }
           EOF
-          npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          npm publish --access public --provenance
