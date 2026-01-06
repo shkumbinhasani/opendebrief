@@ -1,5 +1,11 @@
 # opendebreif
 
+## 0.2.5
+
+### Patch Changes
+
+- [`e47e85d`](https://github.com/shkumbinhasani/opendebreif/commit/e47e85dddaf8b1c914a2240ea6fed67a07fe02bc) Thanks [@shkumbinhasani](https://github.com/shkumbinhasani)! - Verify full automated release pipeline
+
 ## 0.2.4
 
 ### Patch Changes
