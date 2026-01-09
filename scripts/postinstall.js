@@ -14,7 +14,7 @@ const projectRoot = join(__dirname, "..");
 
 // Check if we're on macOS
 if (process.platform !== "darwin") {
-  console.log("opendebreif: Skipping native build (macOS only)");
+  console.log("opendebrief: Skipping native build (macOS only)");
   process.exit(0);
 }
 
@@ -28,33 +28,33 @@ if (!existsSync(swiftSource)) {
   // Try dist directory (for npm install from package)
   const distSwiftSource = join(distDir, "recorder.swift");
   if (existsSync(distSwiftSource)) {
-    console.log("opendebreif: Compiling native recorder from dist...");
+    console.log("opendebrief: Compiling native recorder from dist...");
     try {
       execSync(`swiftc -O -o "${join(distDir, "recorder")}" "${distSwiftSource}"`, {
         stdio: "inherit",
       });
-      console.log("opendebreif: Native recorder compiled successfully");
+      console.log("opendebrief: Native recorder compiled successfully");
     } catch (error) {
-      console.error("opendebreif: Failed to compile native recorder");
+      console.error("opendebrief: Failed to compile native recorder");
       console.error("Make sure you have Xcode Command Line Tools installed:");
       console.error("  xcode-select --install");
       process.exit(1);
     }
   } else {
-    console.log("opendebreif: No Swift source found, skipping native build");
+    console.log("opendebrief: No Swift source found, skipping native build");
   }
   process.exit(0);
 }
 
 // Compile from native directory
-console.log("opendebreif: Compiling native recorder...");
+console.log("opendebrief: Compiling native recorder...");
 try {
   execSync(`swiftc -O -o "${join(nativeDir, "recorder")}" "${swiftSource}"`, {
     stdio: "inherit",
   });
-  console.log("opendebreif: Native recorder compiled successfully");
+  console.log("opendebrief: Native recorder compiled successfully");
 } catch (error) {
-  console.error("opendebreif: Failed to compile native recorder");
+  console.error("opendebrief: Failed to compile native recorder");
   console.error("Make sure you have Xcode Command Line Tools installed:");
   console.error("  xcode-select --install");
   process.exit(1);

@@ -1,10 +1,10 @@
-# opendebreif
+# opendebrief
 
 Record any meeting. Transcribe it. Know who said what.
 
 ![macOS](https://img.shields.io/badge/macOS-12.3+-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
-![GitHub Release](https://img.shields.io/github/v/release/shkumbinhasani/opendebreif)
+![GitHub Release](https://img.shields.io/github/v/release/shkumbinhasani/opendebrief)
 
 ## Features
 
@@ -38,7 +38,7 @@ Record any meeting. Transcribe it. Know who said what.
 ## Installation
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/shkumbinhasani/opendebreif/main/install | bash
+curl -fsSL https://raw.githubusercontent.com/shkumbinhasani/opendebrief/main/install | bash
 ```
 
 One command. One binary. No dependencies.
@@ -51,11 +51,11 @@ One command. One binary. No dependencies.
 ### From source
 
 ```bash
-git clone https://github.com/shkumbinhasani/opendebreif.git
-cd opendebreif
+git clone https://github.com/shkumbinhasani/opendebrief.git
+cd opendebrief
 bun install
 bun run build:current
-./dist/darwin-arm64/opendebreif
+./dist/darwin-arm64/opendebrief
 ```
 
 ## Usage
@@ -63,7 +63,7 @@ bun run build:current
 Start the application:
 
 ```bash
-opendebreif
+opendebrief
 ```
 
 ### Keyboard Shortcuts
@@ -127,8 +127,8 @@ Or configure them in the app by pressing `a` on the main screen.
 | Path | Description |
 |------|-------------|
 | `~/MeetingRecordings/` | Default recordings directory |
-| `~/.config/opendebreif/config.json` | User configuration |
-| `~/.local/share/opendebreif/auth.json` | Stored API keys |
+| `~/.config/opendebrief/config.json` | User configuration |
+| `~/.local/share/opendebrief/auth.json` | Stored API keys |
 
 ## How It Works
 
@@ -157,19 +157,19 @@ A custom Swift CLI handles audio recording, compiled during installation. The re
 
 ```bash
 # Start the TUI
-opendebreif
+opendebrief
 
 # Check for updates
-opendebreif upgrade
+opendebrief upgrade
 
 # Show version
-opendebreif version
+opendebrief version
 
 # Show help
-opendebreif help
+opendebrief help
 
-# Debug mode (logs to ~/opendebreif-debug.log)
-opendebreif --debug
+# Debug mode (logs to ~/opendebrief-debug.log)
+opendebrief --debug
 ```
 
 ## Development

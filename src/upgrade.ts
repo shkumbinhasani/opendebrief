@@ -1,6 +1,6 @@
 import { VERSION, PACKAGE_NAME } from "./version";
 
-const REPO = "shkumbinhasani/opendebreif";
+const REPO = "shkumbinhasani/opendebrief";
 
 interface UpdateInfo {
   currentVersion: string;

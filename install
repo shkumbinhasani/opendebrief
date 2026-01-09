@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-APP=opendebreif
-REPO="shkumbinhasani/opendebreif"
+APP=opendebrief
+REPO="shkumbinhasani/opendebrief"
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -13,7 +13,7 @@ NC='\033[0m'
 
 usage() {
     cat <<EOF
-opendebreif Installer
+opendebrief Installer
 
 Usage: install [options]
 
@@ -58,7 +58,7 @@ case "$raw_os" in
     Linux*) os="linux" ;;
     *)
         echo -e "${RED}Unsupported OS: $raw_os${NC}"
-        echo -e "${DIM}opendebreif currently only supports macOS and Linux${NC}"
+        echo -e "${DIM}opendebrief currently only supports macOS and Linux${NC}"
         exit 1
         ;;
 esac
@@ -84,7 +84,7 @@ fi
 
 # macOS only for now (Swift recorder)
 if [ "$os" != "darwin" ]; then
-    echo -e "${RED}opendebreif currently only supports macOS${NC}"
+    echo -e "${RED}opendebrief currently only supports macOS${NC}"
     echo -e "${DIM}Linux support coming soon!${NC}"
     exit 1
 fi
@@ -185,7 +185,7 @@ if [[ ":$PATH:" != *":$install_dir:"* ]]; then
         echo
         if [[ $REPLY =~ ^[Yy]$ ]]; then
             echo "" >> "$shell_config"
-            echo "# opendebreif" >> "$shell_config"
+            echo "# opendebrief" >> "$shell_config"
             echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$shell_config"
             echo -e "${GREEN}Added to $shell_config${NC}"
             echo -e "${DIM}Run: source $shell_config${NC}"

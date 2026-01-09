@@ -19,7 +19,7 @@ const version = packageJson.version;
 // Write to src/version.ts
 const versionTs = `// Version information - auto-generated, do not edit manually
 export const VERSION = "${version}";
-export const PACKAGE_NAME = "opendebreif";
+export const PACKAGE_NAME = "opendebrief";
 `;
 
 writeFileSync(join(ROOT, "src/version.ts"), versionTs);

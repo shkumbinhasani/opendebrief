@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
 
 /**
- * Build script for opendebreif native binaries
+ * Build script for opendebrief native binaries
  * Creates standalone executables for distribution via GitHub Releases
  */
 
@@ -35,7 +35,7 @@ export const PACKAGE_NAME = "${pkg.name}";
 
 async function buildBinary(target: Target): Promise<string> {
   const bunTarget = BUN_TARGETS[target];
-  const outputName = target.startsWith("darwin") ? "opendebreif" : "opendebreif";
+  const outputName = target.startsWith("darwin") ? "opendebrief" : "opendebrief";
   const outputPath = join(distDir, target, outputName);
 
   console.log(`  Building for ${target}...`);
@@ -67,7 +67,7 @@ async function compileSwiftRecorder(targetDir: string): Promise<void> {
 
 async function createArchive(target: Target, version: string): Promise<string> {
   const targetDir = join(distDir, target);
-  const archiveName = `opendebreif-v${version}-${target}${target.startsWith("linux") ? ".tar.gz" : ".zip"}`;
+  const archiveName = `opendebrief-v${version}-${target}${target.startsWith("linux") ? ".tar.gz" : ".zip"}`;
   const archivePath = join(distDir, archiveName);
 
   console.log(`  Creating ${archiveName}...`);
@@ -87,7 +87,7 @@ async function prepareNpmPackages(version: string, targets: Target[]) {
   console.log("\n4. Preparing npm packages...");
   
   // Update version in all npm packages
-  for (const pkg of ["opendebreif", "opendebreif-darwin-arm64", "opendebreif-darwin-x64"]) {
+  for (const pkg of ["opendebrief", "opendebrief-darwin-arm64", "opendebrief-darwin-x64"]) {
     const pkgJsonPath = join(npmDir, pkg, "package.json");
     if (existsSync(pkgJsonPath)) {
       const pkgJson = JSON.parse(await readFile(pkgJsonPath, "utf-8"));
@@ -105,13 +105,13 @@ async function prepareNpmPackages(version: string, targets: Target[]) {
   for (const target of targets) {
     if (!target.startsWith("darwin")) continue;
     
-    const npmPkgDir = join(npmDir, `opendebreif-${target}`, "bin");
+    const npmPkgDir = join(npmDir, `opendebrief-${target}`, "bin");
     await mkdir(npmPkgDir, { recursive: true });
     
     // Copy main binary
     await copyFile(
-      join(distDir, target, "opendebreif"),
-      join(npmPkgDir, "opendebreif")
+      join(distDir, target, "opendebrief"),
+      join(npmPkgDir, "opendebrief")
     );
     
     // Copy recorder if exists
@@ -120,17 +120,17 @@ async function prepareNpmPackages(version: string, targets: Target[]) {
       await copyFile(recorderPath, join(npmPkgDir, "recorder"));
     }
     
-    console.log(`   Prepared opendebreif-${target}`);
+    console.log(`   Prepared opendebrief-${target}`);
   }
   
   console.log("\nTo publish npm packages:");
-  console.log("  cd npm/opendebreif-darwin-arm64 && npm publish");
-  console.log("  cd npm/opendebreif-darwin-x64 && npm publish");
-  console.log("  cd npm/opendebreif && npm publish");
+  console.log("  cd npm/opendebrief-darwin-arm64 && npm publish");
+  console.log("  cd npm/opendebrief-darwin-x64 && npm publish");
+  console.log("  cd npm/opendebrief && npm publish");
 }
 
 async function buildAll() {
-  console.log("Building opendebreif binaries...\n");
+  console.log("Building opendebrief binaries...\n");
 
   // Clean dist
   if (existsSync(distDir)) {
@@ -195,7 +195,7 @@ async function buildAll() {
 }
 
 async function buildCurrent() {
-  console.log("Building opendebreif for current platform...\n");
+  console.log("Building opendebrief for current platform...\n");
 
   // Sync version
   const version = await syncVersion();
@@ -212,8 +212,8 @@ async function buildCurrent() {
     await compileSwiftRecorder(join(distDir, target));
   }
 
-  console.log(`\nDone! Binary at: dist/${target}/opendebreif`);
-  console.log(`\nTo test: ./dist/${target}/opendebreif`);
+  console.log(`\nDone! Binary at: dist/${target}/opendebrief`);
+  console.log(`\nTo test: ./dist/${target}/opendebrief`);
 }
 
 // Main

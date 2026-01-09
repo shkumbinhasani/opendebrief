@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
 
 /**
- * Build script for opendebreif
+ * Build script for opendebrief
  * - Bundles TypeScript to dist/
  * - Compiles native Swift recorder
  * - Copies necessary files
@@ -17,7 +17,7 @@ const distDir = join(projectRoot, "dist");
 const nativeDir = join(projectRoot, "native");
 
 async function build() {
-  console.log("Building opendebreif...\n");
+  console.log("Building opendebrief...\n");
 
   // 1. Create dist directory
   console.log("1. Creating dist directory...");

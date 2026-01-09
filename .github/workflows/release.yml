@@ -39,13 +39,13 @@ jobs:
         run: |
           cat > src/version.ts << EOF
           export const VERSION = "${{ env.VERSION }}";
-          export const PACKAGE_NAME = "opendebreif";
+          export const PACKAGE_NAME = "opendebrief";
           EOF
 
       - name: Build binary
         run: |
           mkdir -p dist/darwin-arm64
-          bun build src/cli.ts --compile --outfile=dist/darwin-arm64/opendebreif
+          bun build src/cli.ts --compile --outfile=dist/darwin-arm64/opendebrief
 
       - name: Compile Swift recorder
         run: |
@@ -54,13 +54,13 @@ jobs:
       - name: Create archive for GitHub Release
         run: |
           cd dist/darwin-arm64
-          zip -r ../opendebreif-v${{ env.VERSION }}-darwin-arm64.zip .
+          zip -r ../opendebrief-v${{ env.VERSION }}-darwin-arm64.zip .
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: release-darwin-arm64
-          path: dist/opendebreif-v${{ env.VERSION }}-darwin-arm64.zip
+          path: dist/opendebrief-v${{ env.VERSION }}-darwin-arm64.zip
 
   release:
     needs: [build-macos]

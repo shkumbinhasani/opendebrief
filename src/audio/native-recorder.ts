@@ -6,7 +6,7 @@ import { existsSync } from "fs";
 
 // Debug logger - will be set by CLI if --debug is passed
 function debugLog(message: string) {
-  const logger = (globalThis as any).__opendebreif_debug;
+  const logger = (globalThis as any).__opendebrief_debug;
   if (logger) {
     logger(`[native-recorder] ${message}`);
   }
@@ -54,9 +54,9 @@ function getRecorderPath(): string {
   debugLog(`import.meta.path: ${import.meta.path}`);
   
   // When running from npm global install, the CLI is at:
-  // ~/.bun/install/global/node_modules/opendebreif/dist/cli.js
+  // ~/.bun/install/global/node_modules/opendebrief/dist/cli.js
   // and recorder is at:
-  // ~/.bun/install/global/node_modules/opendebreif/dist/recorder
+  // ~/.bun/install/global/node_modules/opendebrief/dist/recorder
   
   const arg1 = process.argv[1];
   debugLog(`process.argv[1]: ${arg1}`);

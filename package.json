@@ -1,13 +1,13 @@
 {
-  "name": "opendebreif",
-  "version": "0.2.5",
+  "name": "opendebrief",
+  "version": "0.0.1",
   "private": true,
   "description": "Record any meeting. Transcribe it. Know who said what.",
   "author": "Shkumbin Hasani",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/shkumbinhasani/opendebreif.git"
+    "url": "https://github.com/shkumbinhasani/opendebrief.git"
   },
   "type": "module",
   "scripts": {

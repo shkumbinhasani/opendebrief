@@ -185,9 +185,9 @@ export class MeetingTranscriberApp {
       lastSummary: null,
       summaryScrollOffset: 0,
       // Update notification (set by CLI via env vars)
-      updateAvailable: process.env.OPENDEBREIF_UPDATE_AVAILABLE === "1",
-      latestVersion: process.env.OPENDEBREIF_LATEST_VERSION || "",
-      upgradeCommand: process.env.OPENDEBREIF_UPGRADE_COMMAND || "npm install -g opendebreif@latest",
+      updateAvailable: process.env.OPENDEBRIEF_UPDATE_AVAILABLE === "1",
+      latestVersion: process.env.OPENDEBRIEF_LATEST_VERSION || "",
+      upgradeCommand: process.env.OPENDEBRIEF_UPGRADE_COMMAND || "npm install -g opendebrief@latest",
       // Permissions
       screenRecordingPermission: null,
       permissionError: null,
@@ -441,7 +441,7 @@ export class MeetingTranscriberApp {
 
     // ASCII Art Title
     const asciiTitle = new ASCIIFontRenderable(this.renderer, {
-      text: "opendebreif",
+      text: "opendebrief",
       font: "tiny",
       color: [colors.primary, colors.secondary, colors.accent],
     });
@@ -1569,7 +1569,7 @@ your macOS version is 12.3 or later.
       
       const parts: StyledText[] = [];
       parts.push(t`${secondary("Key:")} ${maskedKey}\n\n`);
-      parts.push(t`${dim("Stored in:")}\n${dim("~/.local/share/opendebreif/")}`);
+      parts.push(t`${dim("Stored in:")}\n${dim("~/.local/share/opendebrief/")}`);
       
       if (this.state.errorMessage) {
         parts.push(t`\n\n${warning(this.state.errorMessage)}`);

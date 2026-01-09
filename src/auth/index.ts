@@ -1,5 +1,5 @@
-// Authentication module for opendebreif
-// Stores API keys securely in ~/.local/share/opendebreif/auth.json
+// Authentication module for opendebrief
+// Stores API keys securely in ~/.local/share/opendebrief/auth.json
 
 import { z } from "zod";
 import { homedir } from "os";
@@ -11,7 +11,7 @@ function getXdgDataHome(): string {
   return process.env.XDG_DATA_HOME || join(homedir(), ".local", "share");
 }
 
-const APP_NAME = "opendebreif";
+const APP_NAME = "opendebrief";
 
 export const AuthPath = {
   get data() {

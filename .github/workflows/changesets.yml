@@ -86,7 +86,7 @@ jobs:
       - name: Build binary
         run: |
           mkdir -p dist/darwin-arm64
-          bun build src/cli.ts --compile --outfile=dist/darwin-arm64/opendebreif
+          bun build src/cli.ts --compile --outfile=dist/darwin-arm64/opendebrief
 
       - name: Compile Swift recorder
         run: |
@@ -95,10 +95,10 @@ jobs:
       - name: Create archive
         run: |
           cd dist/darwin-arm64
-          zip -r ../opendebreif-v${{ needs.changesets.outputs.version }}-darwin-arm64.zip .
+          zip -r ../opendebrief-v${{ needs.changesets.outputs.version }}-darwin-arm64.zip .
 
       - name: Upload to GitHub Release
         run: |
-          gh release upload v${{ needs.changesets.outputs.version }} dist/opendebreif-v${{ needs.changesets.outputs.version }}-darwin-arm64.zip --clobber
+          gh release upload v${{ needs.changesets.outputs.version }} dist/opendebrief-v${{ needs.changesets.outputs.version }}-darwin-arm64.zip --clobber
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

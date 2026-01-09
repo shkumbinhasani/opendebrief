@@ -1,4 +1,4 @@
-// Configuration management for opendebreif
+// Configuration management for opendebrief
 // Similar to opencode's approach using XDG base directories
 
 import { z } from "zod";
@@ -11,7 +11,7 @@ function getXdgConfigHome(): string {
   return process.env.XDG_CONFIG_HOME || join(homedir(), ".config");
 }
 
-const APP_NAME = "opendebreif";
+const APP_NAME = "opendebrief";
 
 export const Path = {
   get config() {

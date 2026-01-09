@@ -15,14 +15,14 @@ ${PACKAGE_NAME} v${VERSION}
 A TUI application for recording and transcribing meetings on macOS
 
 Usage:
-  opendebreif              Start the meeting transcriber TUI
-  opendebreif upgrade      Upgrade to the latest version
-  opendebreif version      Show version information
-  opendebreif help         Show this help message
+  opendebrief              Start the meeting transcriber TUI
+  opendebrief upgrade      Upgrade to the latest version
+  opendebrief version      Show version information
+  opendebrief help         Show this help message
 
 Options:
   --no-update-check        Skip checking for updates on startup
-  --debug                  Enable debug logging to ~/opendebreif-debug.log
+  --debug                  Enable debug logging to ~/opendebrief-debug.log
   --help, -h               Show this help message
   --version, -v            Show version information
 
@@ -37,12 +37,12 @@ Requirements:
 `;
 
 // Debug logging
-const DEBUG_LOG_PATH = join(homedir(), "opendebreif-debug.log");
+const DEBUG_LOG_PATH = join(homedir(), "opendebrief-debug.log");
 let debugEnabled = false;
 
 export function enableDebug() {
   debugEnabled = true;
-  writeFileSync(DEBUG_LOG_PATH, `=== OpenDebreif Debug Log ===\nStarted: ${new Date().toISOString()}\n\n`);
+  writeFileSync(DEBUG_LOG_PATH, `=== OpenDebrief Debug Log ===\nStarted: ${new Date().toISOString()}\n\n`);
   debugLog("Debug mode enabled");
   debugLog(`Version: ${VERSION}`);
   debugLog(`process.argv: ${JSON.stringify(process.argv)}`);
@@ -61,7 +61,7 @@ export function debugLog(message: string) {
 }
 
 // Make debugLog available globally
-(globalThis as any).__opendebreif_debug = debugLog;
+(globalThis as any).__opendebrief_debug = debugLog;
 
 async function main() {
   const args = process.argv.slice(2);
@@ -139,9 +139,9 @@ async function startApp(checkUpdates: boolean) {
     checkForUpdate().then((info) => {
       if (info.updateAvailable) {
         // Store update info for the app to display
-        process.env.OPENDEBREIF_UPDATE_AVAILABLE = "1";
-        process.env.OPENDEBREIF_LATEST_VERSION = info.latestVersion;
-        process.env.OPENDEBREIF_UPGRADE_COMMAND = getUpgradeCommand();
+        process.env.OPENDEBRIEF_UPDATE_AVAILABLE = "1";
+        process.env.OPENDEBRIEF_LATEST_VERSION = info.latestVersion;
+        process.env.OPENDEBRIEF_UPGRADE_COMMAND = getUpgradeCommand();
       }
     });
   }
